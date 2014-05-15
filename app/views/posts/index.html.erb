@@ -9,7 +9,12 @@
       <h4><%= link_to post.title, post_path(post) %></li></h4> <!--or post.url-->
       <p><%= post.description %></p>
       <p>
-        <span class='quiet'>posted by </span><%= post.creator.username %> 
+        <span class='quiet'>posted by </span>
+        <% if post.creator == nil %>
+
+        <% else %>
+          <%= post.creator.username %>
+        <% end %>
         at <%= post.created_at %>
       </p>
       <span>

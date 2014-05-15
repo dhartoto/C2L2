@@ -4,5 +4,11 @@
 
 <%= render 'shared/content_title', title: @post.title %>
 
+  <p><%= @post.title %></p>
+  <br/>
+  <p><%= @post.url %></p>
+  <br/>
   <p><%= @post.description %></p>
+  <br/>
   <hr/>
+  <%= link_to "Edit", edit_post_path(@post)%>
