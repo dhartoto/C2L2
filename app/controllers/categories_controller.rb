@@ -1,6 +1,5 @@
 class CategoriesController < ApplicationController
-  before_action :set_catagory, only: [:edit, :update]
-  before_action :set_cat
+  before_action :set_catagory, only: [:show, :edit, :update]
 
   def index
     @categories = Category.all
@@ -14,12 +13,13 @@ class CategoriesController < ApplicationController
     @category = Category.new(category_params)
     if @category.save
       flash[:notice] = "Your category has been added."
-      redirect_to 
+      redirect_to root_path
     else
       render :new
     end
-
   end
+
+  def show; end
 
   def edit; end
 
@@ -36,14 +36,10 @@ class CategoriesController < ApplicationController
   private
 
   def category_params
-    params.require(:category).permit!
+    params.require(:category).permit(:name)
   end
 
   def set_catagory
     @category = Category.find(params[:id])
-  end
-  
-  def set_cat
-    @categories = Category.all
   end
 end

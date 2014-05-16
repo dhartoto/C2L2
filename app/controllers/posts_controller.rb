@@ -1,7 +1,6 @@
 class PostsController < ApplicationController
 
   before_action :set_post, only: [:show, :edit, :update]
-  before_action :set_cat
 
   def index
     @posts = Post.all
@@ -28,7 +27,7 @@ class PostsController < ApplicationController
   def edit; end
 
   def update
-    if @post.update(post_params) # Why is this not @post.update = post_params
+    if @post.update(post_params)
       flash[:notice] = "You post has been updated!"
       redirect_to post_path(@post)
     else
@@ -43,9 +42,5 @@ private
 
   def set_post
     @post = Post.find(params[:id])
-  end
-
-  def set_cat
-    @categories = Category.all
   end
 end
