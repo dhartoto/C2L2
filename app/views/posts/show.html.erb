@@ -1,14 +1,15 @@
+<p class='pull-right'>
+  [<%= link_to "Edit this post", edit_post_path(@post) %>]
+</p>
 <p>
   <%= render @post.categories %>
 </p>
 
 <%= render 'shared/content_title', title: @post.title %>
-
-  <p><%= @post.title %></p>
-  <br/>
-  <p><%= @post.url %></p>
-  <br/>
-  <p><%= @post.description %></p>
-  <br/>
-  <hr/>
-  <%= link_to "Edit", edit_post_path(@post)%>
+  <div class="well">
+    <p>URL:</p><p><%= @post.url %></p>
+    <br/>
+    <p><%= @post.description %></p>
+    <br/>
+  </div>
+    <hr/>

@@ -3,18 +3,18 @@
 <% @posts.each do |post| %>
   <div class="row">
     <div class='span8 well'>
-
+      
       <%= render post.categories %>
       
       <h4><%= link_to post.title, post_path(post) %></li></h4> <!--or post.url-->
       <p><%= post.description %></p>
       <p>
-        <span class='quiet'>posted by </span>
-        <% if post.creator == nil %>
+        <span class='quiet'>posted </span>
+          <% if post.creator == nil %>
 
-        <% else %>
-          <%= post.creator.username %>
-        <% end %>
+          <% else %>
+            by <%= post.creator.username %>
+          <% end %>
         at <%= post.created_at %>
       </p>
       <span>

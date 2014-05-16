@@ -1,12 +1,7 @@
-<% if @post.errors.any? %>
-<ul>
-  <% @post.errors.full_messages.each do |error|%>
-    <li><%= error %></li>
-  <% end %>
-</ul>
-<% end %>
+<%= render 'shared/alert', alert: @post.errors %>
 
 <%= form_for @post do |f| %>
+
   <%= f.label :title %>
   <%= f.text_field :title %>
   <br/>
@@ -14,7 +9,7 @@
   <%= f.text_field :url %>
   <br/>
   <%= f.label :description %>
-  <%= f.text_area :description %>
+  <%= f.text_area :description, rows: 5 %>
   <br/>
-  <%= f.submit "Submit", class: 'btn btn-primary' %>
+  <%= f.submit(@post.new_record? ? 'Create Post' : 'Update Post', class: 'btn btn-primary') %>
 <% end %>
