@@ -7,6 +7,7 @@ class PostsController < ApplicationController
   end
 
   def show
+    @comment = Comment.new
   end
 
   def new
@@ -37,7 +38,7 @@ class PostsController < ApplicationController
 
 private
   def post_params
-    params.require(:post).permit!
+    params.require(:post).permit(:url, :title, :description, category_ids: [])
   end
 
   def set_post

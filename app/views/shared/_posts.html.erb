@@ -2,9 +2,9 @@
   <div class="row">
     <div class='span8 well'>
       
-      <%= render post.categories %>
+      <%= render post.categories %> <!--This passes in each category obj and looks for the category partial in the categories folder -->
       
-      <h4><%= link_to post.title, post_path(post) %></li></h4> <!--or post.url-->
+      <h4><%= link_to post.title, "http://#{post.url}" %></li></h4>
       <p><%= post.description %></p>
       <p>
         <span class='quiet'>posted </span>
@@ -13,7 +13,7 @@
           <% else %>
             by <%= post.creator.username %>
           <% end %>
-        at <%= post.created_at %>
+        at <%= fix_date(post.created_at) %>
       </p>
       <span>
         <%= link_to "#{post.comments.size} comments", post_path(post) %>
